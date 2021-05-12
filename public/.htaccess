@@ -1,0 +1,65 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # to block specific IP address
+     #order allow,deny
+    #deny from 127.0.0.1
+    #allow from all
+
+    #to whitlist specific ip 
+
+    #order deny,allow
+    #deny from all
+    #allow from 127.0.0.1
+
+    #order allow,deny
+    #deny from appointment.com  not working
+    #allow from all
+
+    #Redirect 301 / http://google.com
+
+    # DirectoryIndex dashboard.blade.php  not working
+
+    # redirect every one except ip address 
+    #ErrorDocument 403 http://www.yahoo.com/
+    #Order deny,allow
+    #Deny from all
+    #Allow from 127.0.0.1
+
+#AuthName "Under Development"
+#AuthUserFile /web/sitename.com/.htpasswd
+#AuthType basic
+#Require valid-user
+#Order deny,allow
+#Deny from all
+#Allow from 127.0.0.1 w3.org htmlhelp.com googlebot.com
+#Satisfy Any
+
+#SetEnv TZ America/Indianapolis
+#DirectoryIndex index.php
+
+
+
+
+
+</IfModule>
+
+  
